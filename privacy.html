@@ -16,7 +16,7 @@
 
   <main class="doc">
     <h1>Privacy Policy</h1>
-    <p class="muted">Web Scanner: Dead Links &amp; Security (Chrome extension). Effective October 6, 2026.</p>
+    <p class="muted">Web Scanner: Dead Links &amp; Security (Chrome extension). Effective October 7, 2026.</p>
 
     <h2>Summary</h2>
     <ul>
@@ -27,7 +27,10 @@
 
     <h2>What the extension does with data</h2>
     <h3>Link scans</h3>
-    <p>When you start a link scan, the extension requests the pages of the website you entered and checks each link found on them once, directly from your browser, to read their HTTP status. Requests go only to the sites you scan and the sites they link to, and are sent without your cookies.</p>
+    <p>When you start a link scan, the extension requests the pages of the website you entered (or the pages listed in its <code>sitemap.xml</code>, or a list of addresses you paste) and checks each link found on them once, directly from your browser, to read their HTTP status and redirects. For each broken link it keeps the pages it was found on and the link text, so you can fix it. Requests go only to the sites you scan and the sites they link to, and are sent without your cookies.</p>
+
+    <h3>Whole-site security checks (Pro)</h3>
+    <p>During a link scan with Pro, the extension also reads the response headers, cookie headers and HTML of up to 200 pages of that site it already fetched, and runs the same passive checks on each. The results stay in your browser.</p>
 
     <h3>Security scans</h3>
     <p>When you start a security scan, the extension reads the HTTP response headers (including cookies the site sets on that request) of the address you entered, and requests a small set of public files from that site, such as <code>robots.txt</code>, up to 8 of its own script files and their source maps, and a header-only request to up to 10 third-party script addresses the page already loads, to see whether they still resolve. If the page is open in your active tab, it also reads that page's HTML, forms, script addresses and the <em>names</em> of its local storage keys. Storage values such as tokens are not copied into results or exports. Nothing from these checks leaves your browser.</p>
@@ -42,7 +45,8 @@
     <p>Purchases are handled by <a href="https://www.lemonsqueezy.com/privacy">Lemon Squeezy</a>, which acts as the merchant of record and processes your payment and email address under its own privacy policy. When you activate, check or remove a license, the extension sends your license key and an instance identifier to the Lemon Squeezy license API (<code>api.lemonsqueezy.com</code>). The license key is stored only in your browser.</p>
 
     <h2>Storage</h2>
-    <p>Settings, the last scan, up to 30 security scan summaries and your license status are stored in Chrome's extension storage on your device. Some on/off settings use Chrome sync storage, which Chrome syncs to your other devices if you have sync turned on. Removing the extension deletes this data.</p>
+    <p>Settings, the last scan, a history of up to 30 security scans and 30 link scans (used to show what changed since the previous scan), client report settings you enter (agency name, client name and logo image) and your license status are stored in Chrome's extension storage on your device. Some on/off settings use Chrome sync storage, which Chrome syncs to your other devices if you have sync turned on. You can delete the history in the extension at any time. Removing the extension deletes all of this data.</p>
+    <p>Reports you print or text you copy with "Send to developer" are created on your device and go only where you send them.</p>
 
     <h2>Permissions</h2>
     <ul>
@@ -63,10 +67,13 @@
     <h2>Children</h2>
     <p>Web Scanner is a developer tool and is not directed at children under 13.</p>
 
+    <h2>Who is responsible</h2>
+    <p>Web Scanner is published by Önder Bakır, an individual developer based in Turkey, who is responsible for this policy. Because the extension does not send your scan data, history or settings to us, we hold no personal data about you. Lemon Squeezy holds your purchase details as merchant of record.</p>
+
     <h2>Changes and contact</h2>
     <p>If this policy changes, the effective date above changes with it. Questions or requests: <a href="https://github.com/onder007/web-scanner/issues">open an issue</a>, or reply to your Lemon Squeezy receipt email.</p>
   </main>
 
-  <footer class="foot"><a href="./">Web Scanner</a><a href="privacy.html">Privacy</a></footer>
+  <footer class="foot"><a href="./">Web Scanner</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></footer>
 </body>
 </html>
