@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy · Web Scanner</title>
+  <meta name="description" content="What data the Web Scanner Chrome extension handles, where it goes, and what it never collects.">
+  <link rel="icon" href="icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="bar">
+    <a class="brand" href="./"><img src="icon.png" alt="" width="28" height="28">Web Scanner</a>
+    <nav><a href="./#pricing">Pricing</a><a href="privacy.html" aria-current="page">Privacy</a></nav>
+  </header>
+
+  <main class="doc">
+    <h1>Privacy Policy</h1>
+    <p class="muted">Web Scanner: Dead Links &amp; Security (Chrome extension). Effective October 6, 2026.</p>
+
+    <h2>Summary</h2>
+    <ul>
+      <li>We do not collect, sell or share your personal data. There is no account, no analytics and no advertising.</li>
+      <li>Scans run in your browser. Scan results, history and settings stay in your browser's extension storage.</li>
+      <li>The extension contacts other servers only for the scans you start, for public DNS lookups, and for license checks. Each case is listed below.</li>
+    </ul>
+
+    <h2>What the extension does with data</h2>
+    <h3>Link scans</h3>
+    <p>When you start a link scan, the extension requests the pages of the website you entered and checks each link found on them once, directly from your browser, to read their HTTP status. Requests go only to the sites you scan and the sites they link to, and are sent without your cookies.</p>
+
+    <h3>Security scans</h3>
+    <p>When you start a security scan, the extension reads the HTTP response headers (including cookies the site sets on that request) of the address you entered, and requests a small set of public files from that site, such as <code>robots.txt</code>, up to 8 of its own script files and their source maps, and a header-only request to up to 10 third-party script addresses the page already loads, to see whether they still resolve. If the page is open in your active tab, it also reads that page's HTML, forms, script addresses and the <em>names</em> of its local storage keys. Storage values such as tokens are not copied into results or exports. Nothing from these checks leaves your browser.</p>
+
+    <h3>Email security lookups (SPF and DMARC)</h3>
+    <p>To check SPF and DMARC records, the domain name you scan is sent to Cloudflare's public DNS-over-HTTPS service (<code>cloudflare-dns.com</code>). Only the domain name is sent. Cloudflare's own <a href="https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver/">resolver privacy policy</a> applies.</p>
+
+    <h3>Network Inspector (Pro)</h3>
+    <p>Only while you turn it on, the Network Inspector records the metadata of requests made by the site you are inspecting: method, address, status, type, timing and response headers. It does not record request or response bodies. The log is kept in memory, is limited to that site, and is deleted when you clear it or close the browser.</p>
+
+    <h3>Licenses and payments</h3>
+    <p>Purchases are handled by <a href="https://www.lemonsqueezy.com/privacy">Lemon Squeezy</a>, which acts as the merchant of record and processes your payment and email address under its own privacy policy. When you activate, check or remove a license, the extension sends your license key and an instance identifier to the Lemon Squeezy license API (<code>api.lemonsqueezy.com</code>). The license key is stored only in your browser.</p>
+
+    <h2>Storage</h2>
+    <p>Settings, the last scan, up to 30 security scan summaries and your license status are stored in Chrome's extension storage on your device. Some on/off settings use Chrome sync storage, which Chrome syncs to your other devices if you have sync turned on. Removing the extension deletes this data.</p>
+
+    <h2>Permissions</h2>
+    <ul>
+      <li><strong>Access to websites</strong> is requested when you start your first scan, because checking links and headers on arbitrary sites requires it. You can revoke it in Chrome's extension settings at any time.</li>
+      <li><strong>activeTab and scripting</strong> let the extension read the page in your current tab when you start a security scan on it.</li>
+      <li><strong>webRequest</strong> is used by the Network Inspector while you have it turned on, and during a security scan to read the cookie headers of the scan's own request.</li>
+      <li><strong>storage</strong> keeps your settings, results and license status.</li>
+      <li><strong>sidePanel</strong> shows the extension next to the page you are checking.</li>
+    </ul>
+
+    <h2>What we never do</h2>
+    <ul>
+      <li>We do not send attack payloads or try to exploit the sites you scan. Checks are passive.</li>
+      <li>We do not collect browsing history, scan pages in the background, or track you across sites.</li>
+      <li>We do not sell or transfer data to third parties, use it for advertising, or use it to determine creditworthiness.</li>
+    </ul>
+
+    <h2>Children</h2>
+    <p>Web Scanner is a developer tool and is not directed at children under 13.</p>
+
+    <h2>Changes and contact</h2>
+    <p>If this policy changes, the effective date above changes with it. Questions or requests: <a href="https://github.com/onder007/web-scanner/issues">open an issue</a>, or reply to your Lemon Squeezy receipt email.</p>
+  </main>
+
+  <footer class="foot"><a href="./">Web Scanner</a><a href="privacy.html">Privacy</a></footer>
+</body>
+</html>
