@@ -3,85 +3,140 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Web Scanner · Dead link checker and passive security audit for Chrome</title>
-  <meta name="description" content="Chrome extension that finds broken links across your site and checks security headers, cookies, CSP, SPF/DMARC and exposed files. Passive, runs in your browser.">
-  <meta property="og:title" content="Web Scanner: Dead Links &amp; Security">
-  <meta property="og:description" content="Find broken links and common security misconfigurations from your browser.">
+  <title>Web Scanner · Broken links and security checks for Chrome</title>
+  <meta name="description" content="A Chrome extension that finds broken links with the page they are on, grades your site's security basics, and gives you the fix for your server.">
+  <meta property="og:title" content="Web Scanner: broken links and security checks for Chrome">
+  <meta property="og:description" content="Every broken link with the page it is on, a security grade in plain words, and the fix for your server.">
   <meta property="og:image" content="https://webscanner.onderbakir.com/og.png">
   <link rel="icon" href="icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="bar">
-    <a class="brand" href="./"><img src="icon.png" alt="" width="28" height="28">Web Scanner</a>
-    <nav><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="privacy.html">Privacy</a></nav>
-  </header>
+  <header class="bar"><div class="wrap">
+    <a class="brand" href="./"><img src="icon.png" alt="" width="24" height="24">Web Scanner</a>
+    <nav class="navlinks" aria-label="Main"><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="guide.html">Guide</a><a href="changelog.html">Changelog</a></nav>
+    <span class="grow"></span>
+    <a class="btn line sm" href="https://chromewebstore.google.com/search/web%20scanner%20dead%20links">Add to Chrome</a>
+  </div></header>
 
-  <main>
-    <div class="hero">
-      <div>
-        <h1>Find broken links and security gaps before your visitors do.</h1>
-        <p class="lead">Web Scanner crawls your site from the browser, checks every internal and external link, and reviews the security basics: headers, cookies, CSP, mixed content, SPF and DMARC, exposed files.</p>
-        <div class="cta">
-          <a class="btn btn-primary" id="store-link" href="https://chromewebstore.google.com/search/web%20scanner%20dead%20links">Add to Chrome, free</a>
-          <a class="btn btn-ghost" href="#pricing">Pro, $9.99 once</a>
-        </div>
-        <p class="note">Passive checks only. Nothing you scan is sent to us.</p>
+  <main class="wrap">
+    <section class="split">
+      <div class="text">
+        <p class="label">Chrome extension</p>
+        <h1>Find broken links and security gaps, and get the fix.</h1>
+        <p class="lead">Scan your site from the browser. Web Scanner lists dead links with the page they are on, grades the security basics, and gives you config for Nginx, Apache, Cloudflare, Next.js and more.</p>
+        <div class="ctas"><a class="btn primary" href="https://chromewebstore.google.com/search/web%20scanner%20dead%20links">Add to Chrome, free</a><a class="btn line" href="#pricing">Pro, $9.99 once</a></div>
+        <dl class="facts">
+          <dt>Free</dt><dd>150 URLs per scan, the grade and every issue</dd>
+          <dt>Pro</dt><dd>No URL limit, every fix, client reports, history</dd>
+          <dt>Privacy</dt><dd>Runs in your browser. Nothing you scan is sent to us.</dd>
+        </dl>
       </div>
-      <img class="shot" src="hero.png" alt="Web Scanner link report: 7 broken links, the first one open with the page it is on and its link text" width="1600" height="1200">
-    </div>
+      <figure><img src="img/fix.webp" width="1394" height="1000" alt="A finding in Web Scanner: the missing Content-Security-Policy header, the evidence, why it matters, and the Nginx line to add"><figcaption>A missing Content-Security-Policy, with the evidence and the Nginx line to add.</figcaption></figure>
+    </section>
 
-    <section id="features">
-      <h2>What it checks</h2>
-      <p class="muted">Two scanners in one panel, built for people who maintain websites.</p>
-      <div class="grid">
-        <div class="card"><h3>Dead links</h3><p>Crawls the pages of your site and checks every internal and external link once. Redirects show their full chain, hop by hop.</p></div>
-        <div class="card"><h3>Where it broke</h3><p>Every broken link lists each page it is on and its link text. Open the page and the link is outlined for you.</p></div>
-        <div class="card"><h3>A security grade</h3><p>HTTPS, security headers, cookies and exposed files, graded and sorted into what to fix first and smaller risks, in plain words.</p></div>
-        <div class="card"><h3>Cookies and storage</h3><p>Missing Secure, HttpOnly and SameSite flags, and sensitive-looking keys in browser storage.</p></div>
-        <div class="card"><h3>Email spoofing</h3><p>SPF and DMARC records of your domain, with the policy they actually enforce.</p></div>
-        <div class="card"><h3>The fix for your server</h3><p>Evidence, why it matters and ready-to-paste config for Nginx, Apache, Cloudflare, Next.js, Express and more, picked from what your site runs.</p></div>
+    <section class="split rev" id="how">
+      <figure><img src="img/links.webp" width="2200" height="1180" alt="Link report: 7 broken links on 6 pages, the first one open with the page it is on and its link text" loading="lazy"><figcaption>7 broken links on a test shop, each with the page it is on and its link text.</figcaption></figure>
+      <div class="text">
+        <h2>Know which page to edit.</h2>
+        <p>For each 404, Web Scanner shows every page that links to it and the words of the link. Redirects show their full chain, hop by hop.</p>
+        <ul class="ticks">
+          <li><b>Open page</b> opens it with the broken link outlined</li>
+          <li><b>Redirects and loops</b> with every status on the way</li>
+          <li><b>sitemap.xml or a URL list</b> instead of a crawl<span class="pro">PRO</span></li>
+        </ul>
       </div>
     </section>
 
-    <section id="pricing">
-      <h2>Pricing</h2>
-      <p class="muted">Free covers small sites. Pro is a single payment, no subscription.</p>
+    <section class="split">
+      <div class="text">
+        <h2>A grade you can explain.</h2>
+        <p>HTTPS, security headers, cookies, SPF and DMARC, exposed files like <code>.env</code> or source maps, script libraries. Each issue in plain words, sorted into what to fix first and smaller risks.</p>
+        <ul class="ticks">
+          <li><b>Passive checks:</b> ordinary requests, no attack payloads</li>
+          <li><b>Evidence and the fix</b> for the server your site runs<span class="pro">PRO</span></li>
+          <li><b>Whole site:</b> which crawled pages share each issue<span class="pro">PRO</span></li>
+        </ul>
+      </div>
+      <figure><img src="img/grade.webp" width="2200" height="1120" alt="Security report: grade C with three issues to fix first and five smaller risks" loading="lazy"><figcaption>Grade C: without HTTPS a site can't score above C, so that is the first fix.</figcaption></figure>
+    </section>
+
+    <section class="split rev">
+      <figure><img src="img/report.webp" width="1355" height="1086" alt="Printable client report with the agency name, the grade and the first fix" loading="lazy"><figcaption>The client report: your name or logo, the grade, each issue and its fix.</figcaption></figure>
+      <div class="text">
+        <h2>Send it to the client, or the developer.</h2>
+        <p>Print a report with your name and logo, or save it as PDF. Or copy a plain-text summary with the fix code for an email, a chat or a ticket.</p>
+        <ul class="ticks">
+          <li><b>Client report</b> in English or Turkish<span class="pro">PRO</span></li>
+          <li><b>History</b> shows what changed after you rescan<span class="pro">PRO</span></li>
+          <li><b>CSV and JSON</b> exports<span class="pro">PRO</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+      <h2>One price, no subscription.</h2>
+      <p>The free version covers small sites. Pro is a single payment and includes future updates.</p>
       <div class="plans">
         <div class="plan">
           <h3>Free</h3>
           <div class="price">$0</div>
           <ul>
-            <li>Link scans up to <strong>150 URLs</strong> each</li>
-            <li>Every broken link and where it is</li>
+            <li>Link scans up to 150 URLs each</li>
+            <li>Every broken link, its page and link text</li>
+            <li>Redirect chains</li>
             <li>Security grade and the full issue list</li>
+            <li>Popup, side panel or a full tab</li>
           </ul>
-          <a class="btn btn-ghost" href="https://chromewebstore.google.com/search/web%20scanner%20dead%20links">Add to Chrome</a>
+          <a class="btn line" href="https://chromewebstore.google.com/search/web%20scanner%20dead%20links">Add to Chrome</a>
         </div>
-        <div class="plan pro">
+        <div class="plan">
           <h3>Pro Lifetime</h3>
-          <div class="price">$9.99 <small>one-time</small></div>
+          <div class="price">$9.99<small>one-time</small></div>
           <ul>
-            <li>Link scans up to <strong>20,000 URLs</strong>, sitemap.xml and URL lists</li>
+            <li>No URL limit per scan</li>
+            <li>sitemap.xml and URL lists</li>
             <li>Evidence and the fix for every finding</li>
             <li>Security check of every crawled page</li>
-            <li>Client report with your logo, send to developer, CSV and JSON</li>
+            <li>Client report, send to developer, CSV and JSON</li>
             <li>History with rescan comparison, Network Inspector</li>
+            <li>One license works in up to 5 browsers</li>
           </ul>
-          <a class="btn btn-primary" href="https://onder.lemonsqueezy.com/checkout/buy/c3a944ae-1513-488a-b147-f457c72baefb">Buy Pro</a>
+          <a class="btn primary" href="https://onder.lemonsqueezy.com/checkout/buy/c3a944ae-1513-488a-b147-f457c72baefb">Buy Pro</a>
         </div>
       </div>
     </section>
 
-    <section class="faq">
-      <h2>Questions</h2>
-      <details><summary>Does it attack or stress the sites I scan?</summary><p>No. It sends ordinary requests, the same a browser sends when you open a page, with a configurable concurrency limit and delay. It never sends exploit payloads.</p></details>
-      <details><summary>What happens to my data?</summary><p>Results stay in your browser. The extension talks to the sites you scan, to Cloudflare's public DNS for SPF and DMARC lookups, and to Lemon Squeezy for license checks. Details are in the <a href="privacy.html">privacy policy</a>.</p></details>
-      <details><summary>How do I activate Pro?</summary><p>After checkout you receive a license key by email. Open the extension, choose Get Pro, then I have a key, and paste it. One license works on up to 5 browsers.</p></details>
-      <details><summary>Can I get a refund?</summary><p>Yes, within 14 days of purchase. Reply to your receipt email.</p></details>
+    <section class="band" id="privacy">
+      <div><h2>Your scans stay with you.</h2></div>
+      <div>
+        <p>Web Scanner has no account, no analytics and no ads. It talks to the sites you choose to scan, to Cloudflare's public DNS for SPF and DMARC lookups, and to Lemon Squeezy to check a Pro license. Results and history stay in your browser.</p>
+        <p>It asks for access to a site when you start the first scan, not when you install it. <a href="privacy.html">Read the privacy policy</a>.</p>
+      </div>
+    </section>
+
+    <section class="band faq" id="faq">
+      <div><h2>Questions</h2></div>
+      <div>
+        <details><summary>Does it attack or stress the sites I scan?</summary><p>No. It sends ordinary requests, the same a browser sends when you open a page. You can set the delay between requests and how many pages are checked at once.</p></details>
+        <details><summary>Is there really no URL limit in Pro?</summary><p>Yes. Pro scans follow every link they find unless you set a maximum yourself. Very large sites take longer and use more memory, so keep Chrome open until the scan finishes.</p></details>
+        <details><summary>How do I activate Pro?</summary><p>After checkout you get a license key by email. Open Web Scanner, choose Get Pro, then I have a key, and paste it. To move it to another browser, remove it in the license panel first.</p></details>
+        <details><summary>Which browsers does it run in?</summary><p>Chrome 116 or newer.</p></details>
+        <details><summary>Can I get a refund?</summary><p>Yes, within 14 days of purchase. Reply to your receipt email.</p></details>
+      </div>
+    </section>
+
+    <section class="closing">
+      <h2>Scan your site in the next minute.</h2>
+      <div class="ctas" style="margin:0"><a class="btn primary" href="https://chromewebstore.google.com/search/web%20scanner%20dead%20links">Add to Chrome, free</a><a class="btn line" href="guide.html">Read the guide</a></div>
     </section>
   </main>
 
-  <footer class="foot"><span class="muted">Payments by Lemon Squeezy</span><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="https://github.com/onder007/web-scanner/issues">Support</a></footer>
+  <footer class="foot"><div class="wrap">
+    <a href="./">Web Scanner</a><a href="guide.html">Guide</a><a href="changelog.html">Changelog</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="https://github.com/onder007/web-scanner/issues">Support</a>
+    <span class="grow"></span><span>Payments by Lemon Squeezy</span>
+  </div></footer>
 </body>
 </html>
