@@ -7,7 +7,7 @@
   <meta name="description" content="Chrome extension that finds broken links across your site and checks security headers, cookies, CSP, SPF/DMARC and exposed files. Passive, runs in your browser.">
   <meta property="og:title" content="Web Scanner: Dead Links &amp; Security">
   <meta property="og:description" content="Find broken links and common security misconfigurations from your browser.">
-  <meta property="og:image" content="https://onder007.github.io/web-scanner/og.png">
+  <meta property="og:image" content="https://webscanner.onderbakir.com/og.png">
   <link rel="icon" href="icon.png">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -28,19 +28,19 @@
         </div>
         <p class="note">Passive checks only. Nothing you scan is sent to us.</p>
       </div>
-      <img class="shot" src="hero.png" alt="Web Scanner results table listing broken links and the page each was found on" width="1600" height="1200">
+      <img class="shot" src="hero.png" alt="Web Scanner link report: 7 broken links, the first one open with the page it is on and its link text" width="1600" height="1200">
     </div>
 
     <section id="features">
       <h2>What it checks</h2>
       <p class="muted">Two scanners in one panel, built for people who maintain websites.</p>
       <div class="grid">
-        <div class="card"><h3>Dead links</h3><p>Crawls the pages of your site, checks every link once, follows redirects and sorts results into broken, redirected, blocked and network errors.</p></div>
-        <div class="card"><h3>Where it broke</h3><p>Every broken link shows the page it was found on, so you know exactly what to edit.</p></div>
-        <div class="card"><h3>Security headers</h3><p>HSTS, Content-Security-Policy, X-Frame-Options, Referrer-Policy and more, with what each missing header means.</p></div>
+        <div class="card"><h3>Dead links</h3><p>Crawls the pages of your site and checks every internal and external link once. Redirects show their full chain, hop by hop.</p></div>
+        <div class="card"><h3>Where it broke</h3><p>Every broken link lists each page it is on and its link text. Open the page and the link is outlined for you.</p></div>
+        <div class="card"><h3>A security grade</h3><p>HTTPS, security headers, cookies and exposed files, graded and sorted into what to fix first and smaller risks, in plain words.</p></div>
         <div class="card"><h3>Cookies and storage</h3><p>Missing Secure, HttpOnly and SameSite flags, and sensitive-looking keys in browser storage.</p></div>
         <div class="card"><h3>Email spoofing</h3><p>SPF and DMARC records of your domain, with the policy they actually enforce.</p></div>
-        <div class="card"><h3>Fix snippets</h3><p>Ready-to-paste configuration for Nginx, Apache, Cloudflare, Next.js and Vite for each finding.</p></div>
+        <div class="card"><h3>The fix for your server</h3><p>Evidence, why it matters and ready-to-paste config for Nginx, Apache, Cloudflare, Next.js, Express and more, picked from what your site runs.</p></div>
       </div>
     </section>
 
@@ -53,9 +53,8 @@
           <div class="price">$0</div>
           <ul>
             <li>Link scans up to <strong>150 URLs</strong> each</li>
-            <li>Full results table with filters</li>
-            <li>Security scan with every finding</li>
-            <li>Fix snippet for the top finding</li>
+            <li>Every broken link and where it is</li>
+            <li>Security grade and the full issue list</li>
           </ul>
           <a class="btn btn-ghost" href="https://chromewebstore.google.com/search/web%20scanner%20dead%20links">Add to Chrome</a>
         </div>
@@ -63,11 +62,11 @@
           <h3>Pro Lifetime</h3>
           <div class="price">$9.99 <small>one-time</small></div>
           <ul>
-            <li><strong>Unlimited</strong> URLs per scan</li>
-            <li>All fix snippets</li>
-            <li>CSV, JSON and printable reports</li>
-            <li>Network Inspector</li>
-            <li>Scan history</li>
+            <li>Link scans up to <strong>20,000 URLs</strong>, sitemap.xml and URL lists</li>
+            <li>Evidence and the fix for every finding</li>
+            <li>Security check of every crawled page</li>
+            <li>Client report with your logo, send to developer, CSV and JSON</li>
+            <li>History with rescan comparison, Network Inspector</li>
           </ul>
           <a class="btn btn-primary" href="https://onder.lemonsqueezy.com/checkout/buy/c3a944ae-1513-488a-b147-f457c72baefb">Buy Pro</a>
         </div>
@@ -78,7 +77,7 @@
       <h2>Questions</h2>
       <details><summary>Does it attack or stress the sites I scan?</summary><p>No. It sends ordinary requests, the same a browser sends when you open a page, with a configurable concurrency limit and delay. It never sends exploit payloads.</p></details>
       <details><summary>What happens to my data?</summary><p>Results stay in your browser. The extension talks to the sites you scan, to Cloudflare's public DNS for SPF and DMARC lookups, and to Lemon Squeezy for license checks. Details are in the <a href="privacy.html">privacy policy</a>.</p></details>
-      <details><summary>How do I activate Pro?</summary><p>After checkout you receive a license key by email. Open the extension, click Pro and paste the key. One license works on up to 5 browsers.</p></details>
+      <details><summary>How do I activate Pro?</summary><p>After checkout you receive a license key by email. Open the extension, choose Get Pro, then I have a key, and paste it. One license works on up to 5 browsers.</p></details>
       <details><summary>Can I get a refund?</summary><p>Yes, within 14 days of purchase. Reply to your receipt email.</p></details>
     </section>
   </main>
