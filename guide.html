@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Guide · Web Scanner</title>
+  <meta name="description" content="How to scan a site for broken links and security issues with Web Scanner, read the grade, apply fixes and activate Pro.">
+</head>
+<body>
+  <header class="bar"><div class="wrap">
+    <a class="brand" href="./"><img src="icon.png" alt="" width="24" height="24">Web Scanner</a>
+    <nav class="navlinks" aria-label="Main"><a href="./#how">How it works</a><a href="./#pricing">Pricing</a><a href="guide.html" aria-current="page">Guide</a><a href="changelog.html">Changelog</a></nav>
+    <span class="grow"></span>
+    <a class="btn line sm" href="https://chromewebstore.google.com/search/web%20scanner%20dead%20links">Add to Chrome</a>
+  </div></header>
+  <main class="doc">
+    <h1>Guide</h1>
+    <p class="muted">Web Scanner 1.3 for Chrome 116 or newer.</p>
+    <nav class="toc" aria-label="On this page"><ol>
+      <li><a href="#start">Your first scan</a></li><li><a href="#links">Broken links</a></li><li><a href="#security">Security grade</a></li>
+      <li><a href="#fix">Fixes and reports</a></li><li><a href="#pro">Pro and your license</a></li><li><a href="#trouble">When a scan goes wrong</a></li>
+    </ol></nav>
+
+    <h2 id="start">Your first scan</h2>
+    <ol>
+      <li>Install Web Scanner from the Chrome Web Store and pin it to the toolbar.</li>
+      <li>Open the site you want to check, then click the Web Scanner icon. Web Scanner fills in the address of the open tab.</li>
+      <li>Choose <b>Scan this site</b> for the security check, or <b>Find broken links</b> for a link scan.</li>
+      <li>The first time, Chrome asks to let Web Scanner read the site. Allow it. The extension does not ask for this when you install it.</li>
+    </ol>
+    <p>You can keep working in the toolbar popup, open the side panel next to the page, or use <b>Open in a tab</b> from the menu for a full-width view.</p>
+
+    <h2 id="links">Broken links</h2>
+    <p>A link scan starts on the page you give it, follows links inside the site and checks external links once. The report lists broken links first, then redirects. Open a row to see every page that links to it and the link text.</p>
+    <ul>
+      <li><b>Open page</b> opens that page with the broken link outlined.</li>
+      <li><b>Filters</b> switch between issues, broken links, redirects, external links and everything.</li>
+      <li><b>Scan settings</b> (the gear) set the delay between requests, how many pages are checked at once, folders to skip and whether external links are checked.</li>
+      <li>With Pro you can scan a <code>sitemap.xml</code> or a list of URLs instead of crawling, and there is no URL limit. Set <b>Maximum URLs</b> if you want one; <code>0</code> means no limit.</li>
+    </ul>
+    <p>The free version checks up to 150 URLs per scan. When a scan stops at that limit, the report says how many URLs were not checked.</p>
+
+    <h2 id="security">Security grade</h2>
+    <p>The security check reads the page and its response the way a browser does. It never sends attack payloads. It looks at:</p>
+    <ul>
+      <li>HTTPS and the redirect from HTTP, and Strict-Transport-Security</li>
+      <li>Security headers: Content-Security-Policy, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy</li>
+      <li>Cookie flags: HttpOnly, Secure, SameSite</li>
+      <li>SPF and DMARC records of the domain, against email spoofing</li>
+      <li>Files that should not be public, such as <code>.env</code>, <code>.git/</code> or source maps, plus <code>robots.txt</code> and <code>security.txt</code></li>
+      <li>Script libraries with known versions and API paths found in scripts</li>
+    </ul>
+    <p>Web Scanner sorts issues into <b>Fix these first</b> and <b>Then</b>. Notes and passed checks get their own lists and don't count against the grade. A site without HTTPS can't score above C.</p>
+    <p>With Pro, <b>Whole site</b> runs the same checks on every page the link scan found and shows which pages share each issue.</p>
+
+    <h2 id="fix">Fixes and reports</h2>
+    <p>Each Pro finding shows the evidence from your site, why it matters and the fix. Web Scanner picks the server from the response headers when it can; switch between Nginx, Apache, Cloudflare, Next.js, Express, PHP and HTML yourself if it guessed wrong. Rescan after you deploy to confirm the fix.</p>
+    <ul>
+      <li><b>Send to developer</b> builds a plain-text summary with the fix code for an email, chat or ticket.</li>
+      <li><b>Client report</b> adds your name or logo and prints, or saves as PDF, in English or Turkish.</li>
+      <li><b>Export</b> saves the results as CSV or JSON.</li>
+      <li><b>History</b> keeps past scans on this device and shows what changed after a rescan.</li>
+    </ul>
+
+    <h2 id="pro">Pro and your license</h2>
+    <ol>
+      <li>Choose <b>Get Pro</b> in the extension or on this site. Lemon Squeezy handles checkout.</li>
+      <li>Your license key arrives by email. In Web Scanner choose <b>Get Pro</b>, then <b>I have a key</b>, paste it and choose <b>Activate</b>.</li>
+      <li>One license works in up to 5 browsers. To move it, open the license panel from the menu and choose <b>Remove from this browser</b> first.</li>
+    </ol>
+    <p>You can get a refund within 14 days: reply to your receipt email. A refunded license stops working.</p>
+
+    <h2 id="trouble">When a scan goes wrong</h2>
+    <h3>Chrome did not let it read the site</h3>
+    <p>Start the scan again and allow access when Chrome asks. No extension can scan pages like <code>chrome://</code> or the Chrome Web Store.</p>
+    <h3>Many links show 403 or 429</h3>
+    <p>The site or its firewall is limiting requests. Raise the delay and lower the pages checked at once in Scan settings, then scan again.</p>
+    <h3>A very large scan</h3>
+    <p>Keep Chrome open until it finishes. If the extension restarts during a very large scan, Web Scanner keeps the issues it found so far, but the scan can't continue.</p>
+    <p>Still stuck? <a href="https://github.com/onder007/web-scanner/issues">Open an issue</a> or reply to your receipt email.</p>
+  </main>
+  <footer class="foot"><div class="wrap">
+    <a href="./">Web Scanner</a><a href="guide.html">Guide</a><a href="changelog.html">Changelog</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="https://github.com/onder007/web-scanner/issues">Support</a>
+    <span class="grow"></span><span>Payments by Lemon Squeezy</span>
+  </div></footer>
+</body>
+</html>
