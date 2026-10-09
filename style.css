@@ -47,6 +47,7 @@ a { color: inherit; }
 .btn.line:hover { border-color: var(--color-muted); }
 .btn:active { transform: translateY(1px); }
 .btn.sm { height: 38px; padding: 0 14px; font-size: 14px; }
+.btn.soon { pointer-events: none; opacity: .55; }
 
 /* split rows */
 .split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-xl); align-items: center; padding: var(--space-2xl) 0; border-bottom: 1px solid var(--color-rule); }
