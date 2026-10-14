@@ -4,6 +4,8 @@ Source of [webscanner.onderbakir.com](https://webscanner.onderbakir.com): the we
 
 The extension's own source code is not in this repository. Web Scanner 1.3 is not on the Chrome Web Store yet; the site says "Coming soon".
 
+![Web Scanner security tab: grade C for www.example.com, findings sorted into "Fix these first" and "Then", with evidence for the selected finding](img/grade.webp)
+
 ## Web Scanner in short
 
 - **Free:** link scans of up to 150 URLs each, every broken link with its page and link text, redirect chains, a security grade and the full issue list. Fixes are not included, apart from one sample finding from a demo scan.
