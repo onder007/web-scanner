@@ -2,7 +2,7 @@
 
 Source of [webscanner.onderbakir.com](https://webscanner.onderbakir.com): the website, guide, privacy policy, terms and support link for Web Scanner, a Chrome extension that finds broken links and checks a site's security basics.
 
-The extension's own source code is not in this repository. Web Scanner 1.3 is not on the Chrome Web Store yet; the site says "Coming soon".
+The extension's own source code is not in this repository. Install Web Scanner from the [Chrome Web Store](https://chromewebstore.google.com/detail/pnnfoicflgjgmomkaeopjidbbejejipm).
 
 ![Web Scanner security tab: grade C for www.example.com, findings sorted into "Fix these first" and "Then", with evidence for the selected finding](img/grade.webp)
 
