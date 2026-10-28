@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://webscanner.onderbakir.com/sitemap.xml

@@ -18,12 +18,12 @@ The extension's own source code is not in this repository. Install Web Scanner f
 | --- | --- | --- |
 | `index.html` | `/` | Product page: how it works, pricing, privacy summary, FAQ |
 | `guide.html` | `/guide` | User guide for 1.3: first scan, broken links, security grade, fixes and reports, license, troubleshooting |
-| `changelog.html` | `/changelog` | Release notes for 1.2.0 and 1.3.0 |
+| `changelog.html` | `/changelog` | Release notes for 1.2.0 to 1.3.1 |
 | `privacy.html` | `/privacy` | Privacy policy of the extension and the website |
 | `terms.html` | `/terms` | Terms of use, Free and Pro, refunds |
 | `404.html` | any unknown path | Not-found page |
 
-Other files: `style.css` (shared stylesheet), `icon.png`, `og.png` (social preview image), `img/` (screenshots on the home page) and `demo.mp4` (product demo video).
+Other files: `style.css` (shared stylesheet), `fonts/` (self-hosted Space Grotesk, Inter and JetBrains Mono with their OFL licenses), `icon.png`, `og.png` (1200×630 social preview image), `img/` (screenshots and the video poster on the home page), `demo.mp4` (product demo video, no sound), `_headers` (security and cache headers), `sitemap.xml` and `robots.txt`.
 
 ## Run locally
 
@@ -33,7 +33,7 @@ There is no build step. The site is plain HTML and CSS, so any static server wor
 python3 -m http.server 8000
 ```
 
-Then open http://localhost:8000. Locally, pages keep their `.html` extension (for example `/guide.html`), and unknown paths do not show `404.html`; both are handled by Cloudflare Pages.
+Then open http://localhost:8000. Links use extensionless paths such as `/guide`, which a plain static server does not resolve: open `/guide.html` instead. Extensionless paths, `404.html` for unknown paths and `_headers` are handled by Cloudflare Pages.
 
 ## Deploy
 

@@ -1,5 +1,6 @@
 # Cloudflare Pages: security headers for every page.
-# style-src hash = the one inline style attribute, style="margin:0" in index.html (needs 'unsafe-hashes').
+# No inline scripts or style attributes, so script-src and style-src need no hashes. JSON-LD blocks are data, not run as script.
+# Fonts are self-hosted in /fonts (font-src 'self').
 # Cloudflare Web Analytics beacon: static.cloudflareinsights.com script, reports to cloudflareinsights.com.
 /*
   Strict-Transport-Security: max-age=31536000; includeSubDomains
@@ -7,4 +8,25 @@
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: DENY
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' https://fonts.googleapis.com 'unsafe-hashes' 'sha256-q3nqK4VzeI/SowYCYQ/tCfo056B/JMutuSpzbJbHczk='; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+
+# Caching. style.css is versioned with ?v= in every page; bump it when the file changes.
+# Files in /img and /fonts are cached for a year: give a changed file a new name.
+/style.css
+  Cache-Control: public, max-age=31536000, immutable
+/img/*
+  Cache-Control: public, max-age=31536000, immutable
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# A week for files that keep their name when they change.
+/og.png
+  Cache-Control: public, max-age=604800
+/icon.png
+  Cache-Control: public, max-age=604800
+/demo.mp4
+  Cache-Control: public, max-age=604800
+# Pages allows one splat per rule, so posters are listed by name. "!" drops the /img/* value; otherwise the two are joined with a comma.
+/img/demo-poster.webp
+  ! Cache-Control
+  Cache-Control: public, max-age=604800

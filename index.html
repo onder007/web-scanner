@@ -5,23 +5,105 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Web Scanner · Broken links and security checks for Chrome</title>
   <meta name="description" content="A Chrome extension that finds broken links with the page they are on, grades your site's security basics, and gives you the fix for your server.">
+  <link rel="canonical" href="https://webscanner.onderbakir.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://webscanner.onderbakir.com/">
   <meta property="og:title" content="Web Scanner: broken links and security checks for Chrome">
   <meta property="og:description" content="Every broken link with the page it is on, a security grade in plain words, and the fix for your server.">
   <meta property="og:image" content="https://webscanner.onderbakir.com/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261009c">
+  <link rel="preload" href="/fonts/SpaceGrotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/Inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css?v=20261028">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Web Scanner: Broken Link Checker & Security Audit",
+    "description": "A Chrome extension that finds broken links with the page they are on, grades your site's security basics, and gives you the fix for your server.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Chrome",
+    "url": "https://webscanner.onderbakir.com/",
+    "downloadUrl": "https://chromewebstore.google.com/detail/pnnfoicflgjgmomkaeopjidbbejejipm",
+    "image": "https://webscanner.onderbakir.com/og.png",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Free",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      {
+        "@type": "Offer",
+        "name": "Pro Lifetime",
+        "price": "9.99",
+        "priceCurrency": "USD"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does it attack or stress the sites I scan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. It sends ordinary requests, the same a browser sends when you open a page. You can set the delay between requests and how many pages are checked at once."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there really no URL limit in Pro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Pro scans follow every link they find unless you set a maximum yourself. Very large sites take longer and use more memory, so keep Chrome open until the scan finishes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I activate Pro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "After checkout you get a license key by email. Open Web Scanner, choose Get Pro, then I have a key, and paste it. To move it to another browser, remove it in the license panel first."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which browsers does it run in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Chrome 116 or newer."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I get a refund?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, within 14 days of purchase. Reply to your receipt email."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
   <header class="bar"><div class="wrap">
-    <a class="brand" href="./"><img src="icon.png" alt="" width="24" height="24">Web Scanner</a>
-    <nav class="navlinks" aria-label="Main"><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="guide.html">Guide</a><a href="changelog.html">Changelog</a></nav>
+    <a class="brand" href="/"><img src="icon.png" alt="" width="24" height="24">Web Scanner</a>
+    <nav class="navlinks" aria-label="Main"><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="/guide">Guide</a><a href="/changelog">Changelog</a></nav>
     <span class="grow"></span>
     <a class="btn line sm" href="https://chromewebstore.google.com/detail/pnnfoicflgjgmomkaeopjidbbejejipm">Add to Chrome</a>
   </div></header>
 
-  <main class="wrap">
+  <main id="main" class="wrap">
     <section class="split">
       <div class="text">
         <p class="label">Chrome extension</p>
@@ -34,11 +116,11 @@
           <dt>Privacy</dt><dd>Runs in your browser. Nothing you scan is sent to us.</dd>
         </dl>
       </div>
-      <figure><img src="img/fix.webp" width="1394" height="1000" alt="A finding in Web Scanner: the missing Content-Security-Policy header, the evidence, why it matters, and the Nginx line to add"><figcaption>A missing Content-Security-Policy, with the evidence and the Nginx line to add.</figcaption></figure>
+      <figure><img src="img/fix.webp" width="1394" height="1000" fetchpriority="high" alt="A finding in Web Scanner: the missing Content-Security-Policy header, the evidence, why it matters, and the Nginx line to add"><figcaption>A missing Content-Security-Policy, with the evidence and the Nginx line to add.</figcaption></figure>
     </section>
 
     <section class="split rev" id="how">
-      <figure><img src="img/links.webp" width="2200" height="1180" alt="Link report: 7 broken links on 6 pages, the first one open with the page it is on and its link text" loading="lazy"><figcaption>7 broken links on a test shop, each with the page it is on and its link text.</figcaption></figure>
+      <figure><img src="img/links.webp" width="2200" height="1180" alt="Link report: 7 broken links on 6 pages, the first one open with the page it is on and its link text" loading="lazy" decoding="async"><figcaption>7 broken links on a test shop, each with the page it is on and its link text.</figcaption></figure>
       <div class="text">
         <h2>Know which page to edit.</h2>
         <p>For each 404, Web Scanner shows every page that links to it and the words of the link. Redirects show their full chain, hop by hop.</p>
@@ -48,6 +130,8 @@
           <li><b>sitemap.xml or a URL list</b> instead of a crawl<span class="pro">PRO</span></li>
         </ul>
       </div>
+      <!-- demo.mp4 has no audio track, so no captions file is needed. Its on-screen text is summed up in the figcaption. -->
+      <figure class="wide"><video controls preload="none" muted playsinline poster="img/demo-poster.webp" width="1280" height="800" aria-describedby="demo-text"><source src="demo.mp4" type="video/mp4"><a href="demo.mp4">Download the demo video</a>.</video><figcaption id="demo-text">The 70-second tour, without sound. A security scan grades example.com C and lists what to fix first, Pro shows the evidence and the Nginx fix, a link scan finds 7 broken links with their pages, and the client report is ready to print.</figcaption></figure>
     </section>
 
     <section class="split">
@@ -60,11 +144,11 @@
           <li><b>Whole site:</b> which crawled pages share each issue<span class="pro">PRO</span></li>
         </ul>
       </div>
-      <figure><img src="img/grade.webp" width="2200" height="1120" alt="Security report: grade C with three issues to fix first and five smaller risks" loading="lazy"><figcaption>Grade C: without HTTPS a site can't score above C, so that is the first fix.</figcaption></figure>
+      <figure><img src="img/grade.webp" width="2200" height="1120" alt="Security report: grade C with three issues to fix first and five smaller risks" loading="lazy" decoding="async"><figcaption>Grade C: without HTTPS a site can't score above C, so that is the first fix.</figcaption></figure>
     </section>
 
     <section class="split rev">
-      <figure><img src="img/report.webp" width="1355" height="1086" alt="Printable client report with the agency name, the grade and the first fix" loading="lazy"><figcaption>The client report: your name or logo, the grade, each issue and its fix.</figcaption></figure>
+      <figure><img src="img/report.webp" width="1355" height="1086" alt="Printable client report with the agency name, the grade and the first fix" loading="lazy" decoding="async"><figcaption>The client report: your name or logo, the grade, each issue and its fix.</figcaption></figure>
       <div class="text">
         <h2>Send it to the client, or the developer.</h2>
         <p>Print a report with your name and logo, or save it as PDF. Or copy a plain-text summary with the fix code for an email, a chat or a ticket.</p>
@@ -108,13 +192,14 @@
           <a class="btn primary" href="https://onder.lemonsqueezy.com/checkout/buy/0cec39f1-521d-4ea3-b7fd-4d0ddf75a622">Get Pro</a>
         </div>
       </div>
+      <p class="muted">Prices are in USD. VAT or sales tax may be added at checkout, depending on your country.</p>
     </section>
 
     <section class="band" id="privacy">
       <div><h2>Your scans stay with you.</h2></div>
       <div>
         <p>Web Scanner has no account, no analytics and no ads. It talks to the sites you choose to scan, to Cloudflare's public DNS for SPF and DMARC lookups, and to Lemon Squeezy to check a Pro license. Results and history stay in your browser.</p>
-        <p>It asks for access to a site when you start the first scan, not when you install it. <a href="privacy.html">Read the privacy policy</a>.</p>
+        <p>It asks for access to a site when you start the first scan, not when you install it. <a href="/privacy">Read the privacy policy</a>.</p>
       </div>
     </section>
 
@@ -131,12 +216,12 @@
 
     <section class="closing">
       <h2>Scan your site in the next minute.</h2>
-      <div class="ctas" style="margin:0"><a class="btn primary" href="https://chromewebstore.google.com/detail/pnnfoicflgjgmomkaeopjidbbejejipm">Add to Chrome, free</a><a class="btn line" href="guide.html">Read the guide</a></div>
+      <div class="ctas"><a class="btn primary" href="https://chromewebstore.google.com/detail/pnnfoicflgjgmomkaeopjidbbejejipm">Add to Chrome, free</a><a class="btn line" href="/guide">Read the guide</a></div>
     </section>
   </main>
 
   <footer class="foot"><div class="wrap">
-    <a href="./">Web Scanner</a><a href="guide.html">Guide</a><a href="changelog.html">Changelog</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="https://github.com/onder007/web-scanner/issues">Support</a>
+    <a href="/">Web Scanner</a><a href="/guide">Guide</a><a href="/changelog">Changelog</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="https://github.com/onder007/web-scanner/issues">Support</a>
     <span class="grow"></span><span>Payments by Lemon Squeezy</span>
   </div></footer>
 </body>
